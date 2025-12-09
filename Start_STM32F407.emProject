@@ -1,5 +1,38 @@
 <!DOCTYPE CrossStudio_Project_File>
 <solution Name="Start_STM32F407" target="8" version="2">
+  <configuration
+    Name="Debug"
+    Target="STM32F407VETx"
+    arm_architecture="v7EM"
+    arm_core_type="Cortex-M4"
+    arm_endian="Little"
+    arm_fp_abi="Hard"
+    arm_fpu_type="FPv4-SP-D16"
+    arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00080000;RAM;0x10000000;0x00010000;RAM;0x20000000;0x00020000"
+    arm_target_device_name="STM32F407VE"
+    c_preprocessor_definitions="DEBUG=1"
+    debug_register_definition_file="$(PackagesDir)/STM32F4xx/XML/STM32F407_Registers.xml"
+    debug_target_connection="GDB Server"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="None"
+    gdb_server_allow_memory_access_during_execution="Yes"
+    gdb_server_autostart_server="No"
+    gdb_server_command_line=""
+    gdb_server_ignore_checksum_errors="Yes"
+    gdb_server_port="61234"
+    gdb_server_register_access="General and Individual"
+    gdb_server_reset_command="reset"
+    gdb_server_type="ST-LINK"
+    link_linker_script_file="$(PackagesDir)/STM32F4xx/Scripts/STM32F4xx_Flash_CCM.icf"
+    linker_memory_map_file="$(PackagesDir)/STM32F4xx/XML/STM32F407VETx_MemoryMap.xml"
+    macros="DeviceHeaderFile=$(PackagesDir)/STM32F4xx/Device/Include/stm32f4xx.h;DeviceSystemFile=$(PackagesDir)/STM32F4xx/Device/Source/system_stm32f4xx.c;DeviceVectorsFile=$(PackagesDir)/STM32F4xx/Source/stm32f407xx_Vectors.s;DeviceFamily=STM32F4xx;DeviceSubFamily=STM32F407"
+    stack_overflow_prevention="Yes" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions="NDEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_optimization_level="Level 2 for size"
+    link_time_optimization="Yes" />
   <project Name="Start_STM32F407">
     <configuration
       LIBRARY_HEAP_LOCKING="User"
@@ -43,6 +76,9 @@
       target_reset_script="Reset();"
       target_script_file="$(ProjectDir)/Setup/STM32F4xx_Target.js"
       target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration
+      Name="Debug"
+      c_system_include_directories="$(StudioIncDir:$(StudioDir)/include);$(ProjectDir)/Inc;$(ProjectDir)/SEGGER" />
     <folder Name="Application">
       <folder Name="Excluded">
         <configuration Name="Common" build_exclude_from_build="Yes" />
@@ -71,67 +107,53 @@
       </folder>
       <file file_name="Application/OS_StartLEDBlink.c" />
     </folder>
+    <folder Name="DeviceSupport">
+      <file file_name="DeviceSupport/stm32f407xx_Vectors.s" />
+      <file file_name="DeviceSupport/STM32F4xx_Startup.s" />
+      <file file_name="DeviceSupport/system_stm32f4xx.c" />
+    </folder>
     <folder Name="Doc">
-      <file file_name="$(ProjectDir)/../../../../UM01001_embOS.pdf">
-        <configuration Name="Common" file_open_with="Web Browser" />
-      </file>
-      <file file_name="$(ProjectDir)/../../../../UM01061_embOS_CortexM_ES.pdf">
-        <configuration Name="Common" file_open_with="Web Browser" />
-      </file>
       <file file_name="$(ProjectDir)/../../../../Release_embOS.html">
         <configuration Name="Common" file_open_with="Web Browser" />
       </file>
       <file file_name="$(ProjectDir)/../../../../Release_embOS_CortexM_ES.html">
         <configuration Name="Common" file_open_with="Web Browser" />
       </file>
-    </folder>
-    <folder Name="Setup">
-      <file file_name="Setup/BSP.c" />
-      <file file_name="Setup/BSP_UART.c" />
-      <file file_name="Setup/JLINKMEM_Process.c" />
-      <file file_name="Setup/OS_Error.c">
-        <configuration Name="Release" build_exclude_from_build="Yes" />
+      <file file_name="$(ProjectDir)/../../../../UM01001_embOS.pdf">
+        <configuration Name="Common" file_open_with="Web Browser" />
       </file>
-      <file file_name="Setup/RTOSInit_STM32F4xx.c" />
-      <file file_name="Setup/OS_ThreadSafe.c" />
-      <file file_name="Setup/SEGGER_THUMB_Startup.s" />
-      <file file_name="Setup/HardFaultHandler.S" />
-      <file file_name="Setup/SEGGER_HardFaultHandler.c" />
-      <file file_name="Setup/SEGGER_STOP_Handler.c" />
+      <file file_name="$(ProjectDir)/../../../../UM01061_embOS_CortexM_ES.pdf">
+        <configuration Name="Common" file_open_with="Web Browser" />
+      </file>
+    </folder>
+    <folder Name="Lib">
+      <file file_name="Lib/libos_v7m_t_vfpv4_le_dp.a" />
+      <file file_name="Lib/libos_v7m_t_vfpv4_le_r.a">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
     </folder>
     <folder Name="SEGGER">
       <file file_name="SEGGER/SEGGER_RTT.c" />
-      <file file_name="SEGGER/SEGGER_RTT_printf.c" />
       <file file_name="SEGGER/SEGGER_RTT_ASM_ARMv7M.S" />
+      <file file_name="SEGGER/SEGGER_RTT_printf.c" />
       <file file_name="SEGGER/SEGGER_SYSVIEW.c" />
       <file file_name="SEGGER/SEGGER_SYSVIEW_Config_embOS.c" />
       <file file_name="SEGGER/SEGGER_SYSVIEW_embOS.c" />
     </folder>
-    <folder Name="Lib">
-      <file file_name="../../../Lib/libos_v7m_t_vfpv4_le_dp_stop.a">
+    <folder Name="Setup">
+      <file file_name="Setup/BSP.c" />
+      <file file_name="Setup/BSP_UART.c" />
+      <file file_name="Setup/HardFaultHandler.S" />
+      <file file_name="Setup/JLINKMEM_Process.c" />
+      <file file_name="Setup/OS_Error.c">
         <configuration Name="Release" build_exclude_from_build="Yes" />
       </file>
-      <file file_name="../../../Lib/libos_v7m_t_vfpv4_le_r.a">
-        <configuration Name="Debug" build_exclude_from_build="Yes" />
-      </file>
-    </folder>
-    <folder Name="DeviceSupport">
-      <file file_name="DeviceSupport/STM32F4xx_Startup.s" />
-      <file file_name="DeviceSupport/stm32f407xx_Vectors.s" />
-      <file file_name="DeviceSupport/system_stm32f4xx.c" />
+      <file file_name="Setup/OS_ThreadSafe.c" />
+      <file file_name="Setup/RTOSInit_STM32F4xx.c" />
+      <file file_name="Setup/SEGGER_HardFaultHandler.c" />
+      <file file_name="Setup/SEGGER_STOP_Handler.c" />
+      <file file_name="Setup/SEGGER_THUMB_Startup.s" />
     </folder>
     <file file_name="ReadMe.txt" />
   </project>
-  <configuration
-    Name="Debug"
-    c_preprocessor_definitions="DEBUG=1"
-    gcc_debugging_level="Level 3"
-    gcc_optimization_level="None"
-    stack_overflow_prevention="Yes" />
-  <configuration
-    Name="Release"
-    c_preprocessor_definitions="NDEBUG"
-    gcc_debugging_level="Level 3"
-    gcc_optimization_level="Level 2 for size"
-    link_time_optimization="Yes" />
 </solution>

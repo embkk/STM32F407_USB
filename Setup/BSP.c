@@ -40,11 +40,11 @@ Purpose : BSP for the Olimex STM32P407 eval board
 
 /****** SFRs used for LED-Port **************************************/
 
-#define GPIOF_BASE_ADDR           ((unsigned int)0x40021400)
+#define GPIOE_BASE_ADDR           ((unsigned int)0x40021400)
 
-#define GPIOF_MODER               (*(volatile unsigned int*)(GPIOF_BASE_ADDR + 0x00))
-#define GPIOF_ODR                 (*(volatile unsigned int*)(GPIOF_BASE_ADDR + 0x14))
-#define GPIOF_BSRR                (*(volatile unsigned int*)(GPIOF_BASE_ADDR + 0x18))
+#define GPIOE_MODER               (*(volatile unsigned int*)(GPIOE_BASE_ADDR + 0x00))
+#define GPIOE_ODR                 (*(volatile unsigned int*)(GPIOE_BASE_ADDR + 0x14))
+#define GPIOE_BSRR                (*(volatile unsigned int*)(GPIOE_BASE_ADDR + 0x18))
 
 #define RCC_BASE_ADDR             ((unsigned int)(0x40023800))
 #define RCC_AHB1RSTR              (*(volatile unsigned int*)(RCC_BASE_ADDR + 0x10))
@@ -52,16 +52,16 @@ Purpose : BSP for the Olimex STM32P407 eval board
 
 #define RCC_LEDPORT_RSTR          RCC_AHB1RSTR
 #define RCC_LEDPORT_ENR           RCC_AHBENR
-#define RCC_LEDPORT_BIT           (5)
+#define RCC_LEDPORT_BIT           (4)
 
 /****** Assign LEDs to Ports ****************************************/
 
-#define LED_PORT_MODER            GPIOF_MODER
-#define LED_PORT_ODR              GPIOF_ODR
-#define LED_PORT_BSRR             GPIOF_BSRR
+#define LED_PORT_MODER            GPIOE_MODER
+#define LED_PORT_ODR              GPIOE_ODR
+#define LED_PORT_BSRR             GPIOE_BSRR
 
-#define LED0_BIT                  (6)
-#define LED1_BIT                  (7)
+#define LED0_BIT                  (13)
+#define LED1_BIT                  (14)
 
 /*********************************************************************
 *
