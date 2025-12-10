@@ -1,0 +1,46 @@
+<!DOCTYPE CrossStudio_Session_File>
+<session>
+ <Bookmarks/>
+ <Breakpoints groups="" active_group="Breakpoints"/>
+ <ExecutionProfileWindow/>
+ <FrameBuffer/>
+ <Memory1/>
+ <Memory2/>
+ <Memory3/>
+ <Memory4/>
+ <Project>
+  <ProjectSessionItem path="Start_STM32F407"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Application"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Lib"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Setup"/>
+ </Project>
+ <Register1/>
+ <Register2/>
+ <Register3/>
+ <Register4/>
+ <Threads>
+  <ThreadsWindow showLists=""/>
+ </Threads>
+ <TraceWindow>
+  <Trace enabled="Yes"/>
+ </TraceWindow>
+ <Watch1>
+  <Watches active="0" update="Never"/>
+ </Watch1>
+ <Watch2>
+  <Watches active="1" update="Never"/>
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never"/>
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never"/>
+ </Watch4>
+ <Files>
+  <SessionOpenFile windowGroup="DockEditLeft" x="66" y="46" useTextEdit="1" path="Setup/BSP.c" left="0" top="28" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="31" useTextEdit="1" path="Application/OS_StartLEDBlink.c" left="0" top="11" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="35" useTextEdit="1" path="Setup/STM32F4xx_Flash_CCM.icf" left="0" selected="1" top="10" codecName="Default"/>
+ </Files>
+ <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="GDB Server" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/Lib" debugSearchPath="" autoConnectCapabilities="1343"/>
+</session>
