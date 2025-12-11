@@ -1,7 +1,7 @@
 <!DOCTYPE CrossStudio_Session_File>
 <session>
  <Bookmarks/>
- <Breakpoints groups="" active_group="Breakpoints"/>
+ <Breakpoints groups="Breakpoints" active_group="Breakpoints"/>
  <ExecutionProfileWindow/>
  <FrameBuffer/>
  <Memory1/>
@@ -11,8 +11,10 @@
  <Project>
   <ProjectSessionItem path="Start_STM32F407"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407"/>
-  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Application"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Doc"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Lib"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Application"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;DeviceSupport"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Setup"/>
  </Project>
  <Register1/>
@@ -38,9 +40,12 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="66" y="46" useTextEdit="1" path="Setup/BSP.c" left="0" top="28" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="2" y="31" useTextEdit="1" path="Application/OS_StartLEDBlink.c" left="0" top="11" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="12" y="35" useTextEdit="1" path="Setup/STM32F4xx_Flash_CCM.icf" left="0" selected="1" top="10" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="69" y="126" useTextEdit="1" path="Setup/BSP.c" left="0" selected="1" top="105" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="54" useTextEdit="1" path="Application/OS_StartLEDBlink.c" left="0" top="10" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="18" y="97" useTextEdit="1" path="Setup/STM32F4xx_Flash_CCM.icf" left="0" top="66" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="7" useTextEdit="1" path="DeviceSupport/system_stm32f4xx.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="DeviceSupport/STM32F4xx_Startup.s" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="DeviceSupport/stm32f407xx_Vectors.s" left="0" top="0" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="GDB Server" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/Lib" debugSearchPath="" autoConnectCapabilities="1343"/>
+ <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="J-Link" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/Lib" debugSearchPath="" autoConnectCapabilities="3199"/>
 </session>
