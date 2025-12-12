@@ -160,6 +160,12 @@ void MainTask(void) {
   while (IP_IFaceIsReadyEx(_IFaceId) == 0) {
     OS_Delay(50);
   }
+  
+  // Добавьте этот блок
+  IP_Logf_Application("Interface ready!");
+  IP_Logf_Application("My IP: %i", IP_GetIPAddr(_IFaceId));
+  IP_Logf_Application("Gateway: %i", IP_GetGWAddr(_IFaceId));
+
   while (1) {
     BSP_ToggleLED(1);
     OS_Delay(200);
