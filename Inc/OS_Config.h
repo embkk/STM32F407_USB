@@ -58,6 +58,8 @@ Purpose : Configuration settings for the OS build and embOSView
 *  (assuming DEBUG is defined to 1 in debug compile configuration).
 */
 
+#define DEBUG 0 //sorry
+
 #if (defined(DEBUG) && (DEBUG == 1))
   #define OS_LIBMODE_DP
 #else

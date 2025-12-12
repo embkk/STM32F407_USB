@@ -40,7 +40,7 @@ Purpose : BSP for the Olimex STM32P407 eval board
 
 /****** SFRs used for LED-Port **************************************/
 
-#define GPIOE_BASE_ADDR           ((unsigned int)0x40021400)
+#define GPIOE_BASE_ADDR           ((unsigned int)0x40021000)
 
 #define GPIOE_MODER               (*(volatile unsigned int*)(GPIOE_BASE_ADDR + 0x00))
 #define GPIOE_ODR                 (*(volatile unsigned int*)(GPIOE_BASE_ADDR + 0x14))

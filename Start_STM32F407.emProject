@@ -86,38 +86,19 @@
       arm_fpu_type="FPv4-SP-D16"
       arm_simulator_memory_simulation_parameter="ROM;0x08000000;0x00080000;RAM;0x10000000;0x00010000;RAM;0x20000000;0x00020000"
       arm_target_device_name="STM32F407VE"
-      c_system_include_directories="$(StudioIncDir:$(StudioDir)/include);$(ProjectDir)/Inc;$(ProjectDir)/SEGGER"
+      c_system_include_directories="$(StudioIncDir:$(StudioDir)/include);$(ProjectDir)/Inc;$(ProjectDir)/SEGGER;$(ProjectDir)/USBD"
+      debug_initial_breakpoint_set_option="Never"
       debug_register_definition_file="$(PackagesDir)/STM32F4xx/XML/STM32F407_Registers.xml"
+      debug_target_connection="GDB Server"
+      gdb_server_command_line="/opt/st/stm32cubeclt_1.19.0/STLink-gdb-server/bin/ST-LINK_gdbserver -d -v -p 2331 -s -cp /opt/st/stm32cubeclt_1.19.0/STM32CubeProgrammer/bin/&#xa;"
+      gdb_server_port="2331"
       link_linker_script_file="$(PackagesDir)/STM32F4xx/Scripts/STM32F4xx_Flash_CCM.icf"
+      linker_additional_files="$(ProjectDir)/Lib/libos_v7m_t_vfpv4_le_dp.a;$(ProjectDir)/Lib/libos_v7m_t_vfpv4_le_r.a"
       linker_memory_map_file="$(ProjectDir)/Setup/STM32F407VETx_MemoryMap.xml"
       macros="DeviceHeaderFile=$(PackagesDir)/STM32F4xx/Device/Include/stm32f4xx.h;DeviceSystemFile=$(PackagesDir)/STM32F4xx/Device/Source/system_stm32f4xx.c;DeviceVectorsFile=$(PackagesDir)/STM32F4xx/Source/stm32f407xx_Vectors.s;DeviceFamily=STM32F4xx;DeviceSubFamily=STM32F407" />
     <folder Name="Application">
-      <folder Name="Excluded">
-        <configuration Name="Common" build_exclude_from_build="Yes" />
-        <file file_name="Application/OS_EventObjects.c" />
-        <file file_name="Application/OS_ExtendedTask.c" />
-        <file file_name="Application/OS_ExtendTaskContext.c" />
-        <file file_name="Application/OS_Mailboxes.c" />
-        <file file_name="Application/OS_MeasureCPU_Performance.c" />
-        <file file_name="Application/OS_MeasureCST_HRTimer_embOSView.c" />
-        <file file_name="Application/OS_MeasureCST_HRTimer_Printf.c" />
-        <file file_name="Application/OS_MeasureCST_Scope.c" />
-        <file file_name="Application/OS_Mutexes.c" />
-        <file file_name="Application/OS_ObjectIdentifier.c" />
-        <file file_name="Application/OS_Queues.c" />
-        <file file_name="Application/OS_ReadersWriterLock.c" />
-        <file file_name="Application/OS_Semaphores.c" />
-        <file file_name="Application/OS_StackOverflowPrevention.c" />
-        <file file_name="Application/OS_Start2Tasks.c" />
-        <file file_name="Application/OS_Start2Tasks.cpp" />
-        <file file_name="Application/OS_Start2TasksEx.c" />
-        <file file_name="Application/OS_Stop.c" />
-        <file file_name="Application/OS_SWTimer.c" />
-        <file file_name="Application/OS_TaskStartHook.c" />
-        <file file_name="Application/OS_ThreadLocalStorage.c" />
-        <file file_name="Application/OS_Watchdog.c" />
-      </folder>
-      <file file_name="Application/OS_StartLEDBlink.c" />
+      <file file_name="Application/main.c" />
+      <file file_name="Application/USB_HID_Mouse.c" />
     </folder>
     <folder Name="DeviceSupport">
       <file file_name="DeviceSupport/stm32f407xx_Vectors.s" />
@@ -143,6 +124,14 @@
       <file file_name="Lib/libos_v7m_t_vfpv4_le_r.a">
         <configuration Name="Debug" build_exclude_from_build="Yes" />
       </file>
+      <file file_name="Lib/libsegger_v7em_fpv4_sp_d16_t_le_eabi_balanced_d.a" />
+      <file file_name="Lib/libsegger_v7em_fpv4_sp_d16_t_le_eabi_balanced_r.a">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="Lib/libusbd_v7em_fpv4_sp_d16_t_le_eabi_balanced_d.a" />
+      <file file_name="Lib/libusbd_v7em_fpv4_sp_d16_t_le_eabi_balanced_r.a">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
     </folder>
     <folder Name="SEGGER">
       <file file_name="SEGGER/SEGGER_RTT.c" />
@@ -166,6 +155,7 @@
       <file file_name="Setup/SEGGER_STOP_Handler.c" />
       <file file_name="Setup/SEGGER_THUMB_Startup.s" />
     </folder>
+    <file file_name="Inc/OS_Config.h" />
     <file file_name="ReadMe.txt" />
   </project>
 </solution>
