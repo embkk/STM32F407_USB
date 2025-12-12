@@ -98,7 +98,6 @@
       macros="DeviceHeaderFile=$(PackagesDir)/STM32F4xx/Device/Include/stm32f4xx.h;DeviceSystemFile=$(PackagesDir)/STM32F4xx/Device/Source/system_stm32f4xx.c;DeviceVectorsFile=$(PackagesDir)/STM32F4xx/Source/stm32f407xx_Vectors.s;DeviceFamily=STM32F4xx;DeviceSubFamily=STM32F407" />
     <folder Name="Application">
       <file file_name="Application/main.c" />
-      <file file_name="Application/USB_HID_Mouse.c" />
     </folder>
     <folder Name="DeviceSupport">
       <file file_name="DeviceSupport/stm32f407xx_Vectors.s" />
@@ -122,14 +121,6 @@
     <folder Name="Lib">
       <file file_name="Lib/libos_v7m_t_vfpv4_le_dp.a" />
       <file file_name="Lib/libos_v7m_t_vfpv4_le_r.a">
-        <configuration Name="Debug" build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Lib/libsegger_v7em_fpv4_sp_d16_t_le_eabi_balanced_d.a" />
-      <file file_name="Lib/libsegger_v7em_fpv4_sp_d16_t_le_eabi_balanced_r.a">
-        <configuration Name="Debug" build_exclude_from_build="Yes" />
-      </file>
-      <file file_name="Lib/libusbd_v7em_fpv4_sp_d16_t_le_eabi_balanced_d.a" />
-      <file file_name="Lib/libusbd_v7em_fpv4_sp_d16_t_le_eabi_balanced_r.a">
         <configuration Name="Debug" build_exclude_from_build="Yes" />
       </file>
     </folder>
