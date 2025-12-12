@@ -10,7 +10,7 @@
 **********************************************************************
 
 ----------------------------------------------------------------------
-Purpose     : Configuration file for TCP/IP with STM32F746
+Purpose     : Configuration file for TCP/IP with STM32F407 was 746
 ---------------------------END-OF-HEADER------------------------------
 */
 
@@ -31,16 +31,21 @@ Purpose     : Configuration file for TCP/IP with STM32F746
 */
 
 #define ALLOC_SIZE   0x6000                      // Size of memory dedicated to the stack in bytes.
-#define DRIVER       &IP_Driver_STM32F7          // Driver used for target.
-#define TARGET_NAME  "STM32F746"                 // Target name used for DHCP client.
+#define DRIVER       &IP_Driver_STM32F4          // Driver used for target.
+#define TARGET_NAME  "STM32F407"                 // Target name used for DHCP client.
 #define HW_ADDR      "\x00\x22\xC7\xAB\x52\x41"  // MAC addr. used for target.
 #define USE_DHCP     0                           // Use DHCP client or static IP configuration.
 
 //
 // The following parameters are only used when the DHCP client is not active.
 //
-#define IP_ADDR      IP_BYTES2ADDR(192, 168,  88, 88)
+/*#define IP_ADDR      IP_BYTES2ADDR(192, 168,  88, 88)
 #define SUBNET_MASK  IP_BYTES2ADDR(255, 255, 0,   0)
+#define GW_ADDR      IP_BYTES2ADDR(192, 168,   2,   1)
+#define DNS_ADDR     IP_BYTES2ADDR(192, 168,   2,   1)*/
+
+#define IP_ADDR      IP_BYTES2ADDR(192, 168,   2, 252)
+#define SUBNET_MASK  IP_BYTES2ADDR(255, 255, 255,   0)
 #define GW_ADDR      IP_BYTES2ADDR(192, 168,   2,   1)
 #define DNS_ADDR     IP_BYTES2ADDR(192, 168,   2,   1)
 
@@ -51,7 +56,7 @@ Purpose     : Configuration file for TCP/IP with STM32F746
 **********************************************************************
 */
 
-static void _CleanDCache(void* p, unsigned long NumBytes) {
+/*static void _CleanDCache(void* p, unsigned long NumBytes) {
   //SCB_CleanDCache_by_Addr(p, NumBytes);
 }
 static void _InvalidateDCache(void* p, unsigned long NumBytes) {
@@ -63,10 +68,10 @@ static const SEGGER_CACHE_CONFIG _CacheConfig = {
   NULL,                          // pfDMB
   _CleanDCache,                  // pfClean
   _InvalidateDCache              // pfInvalidate
-};
+};*/
 
-static U32 _aPool[ALLOC_SIZE / 4];
-//static U32 _aPool[ALLOC_SIZE / 4] __attribute__ (( section (".IP_RAM") ));  // RAM used by peripherals can NOT be located in ITCM or DTCM RAM.
+//static U32 _aPool[ALLOC_SIZE / 4];
+static U32 _aPool[ALLOC_SIZE / 4] __attribute__ (( section (".RAM1") ));  // RAM used by peripherals can NOT be located in ITCM or DTCM RAM.
 
 /*********************************************************************
 *
@@ -120,7 +125,7 @@ void IP_X_Config(void) {
   int IFaceId;
 
   IP_AssignMemory(_aPool, sizeof(_aPool));                  // Assigning memory should be the first thing.
-  IP_CACHE_SetConfig(&_CacheConfig, sizeof(_CacheConfig));  // Set cache configuration for IP stack.
+  //IP_CACHE_SetConfig(&_CacheConfig, sizeof(_CacheConfig));  // Set cache configuration for IP stack.
   IFaceId = IP_AddEtherInterface(DRIVER);                   // Add driver for your hardware.
   IP_ConfigNumLinkUpProbes(IFaceId, 4);
   IP_BSP_SetAPI(IFaceId, &BSP_IP_Api);                      // Set BSP callbacks for hardware access.

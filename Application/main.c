@@ -37,13 +37,6 @@ Purpose : embOS sample program running two simple tasks, each toggling
 static OS_STACKPTR int Stack0[2000];  // Task stacks
 static OS_TASK         TCB0;                // Task control blocks
 
-static void MainTask(void) {
-  while (1) {
-    BSP_ToggleLED(0);
-    OS_TASK_Delay(50);
-  }
-}
-
 /*********************************************************************
 *
 *       main()
@@ -52,8 +45,16 @@ int main(void) {
   OS_Init();    // Initialize embOS
   OS_InitHW();  // Initialize required hardware
   BSP_Init();   // Initialize LED ports
+  extern void MainTask(void);
   OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
   OS_Start();   // Start embOS
+  IP_Logf_Application("Sending test ping to gateway...");
+int r = IP_SendPingCheckReply(_IFaceId, IP_BYTES2ADDR(192,168,2,1), NULL, 0, 1000);
+if (r == 0) {
+  IP_Logf_Application("Ping successful!");
+} else {
+  IP_Logf_Application("Ping failed: %d", r);
+}
   return 0;
 }
 

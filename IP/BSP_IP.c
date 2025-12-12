@@ -81,10 +81,10 @@ void ETH_IRQHandler(void);
 *            PC1     RMII_MDC
 *            PC4     RMII_RXD0
 *            PC5     RMII_RXD1
-*            PG2     RMII_RXER
-*            PG11    RMII_TX_EN
-*            PG13    RMII_TXD0
-*            PG14    RMII_TXD1
+*            PB10     RMII_RXER
+*            PB11    RMII_TX_EN
+*            PB12    RMII_TXD0
+*            PB13    RMII_TXD1
 */
 static void _cbInit(unsigned IFaceId) {
   U32 v;
@@ -178,41 +178,41 @@ static void _cbInit(unsigned IFaceId) {
   v             |=  (0xBuL << (4u * 2u));
   GPIOB->AFR[1]  = v;
   //
-  // Set PG11 (RMII_TX_EN) as alternate function, speed 100MHz.
+  // Set PB11 (RMII_TX_EN) as alternate function, speed 100MHz.
   //
-  v               = GPIOG->MODER;
+  v               = GPIOB->MODER;
   v              &= ~(0x3uL << (2 * 11));
   v              |=  (0x2uL << (2 * 11));
-  GPIOG->MODER    = v;
-  GPIOG->OSPEEDR |= (0x3uL << (2 * 11));
-  v               = GPIOG->AFR[1];
+  GPIOB->MODER    = v;
+  GPIOB->OSPEEDR |= (0x3uL << (2 * 11));
+  v               = GPIOB->AFR[1];
   v              &= ~(0xFuL << (4 * 3));
   v              |=  (0xBuL << (4 * 3));
-  GPIOG->AFR[1]   = v;
+  GPIOB->AFR[1]   = v;
   //
-  // Set PG13 (RMII_TXD0) as alternate function, speed 100MHz.
+  // Set PB12 (RMII_TXD0) as alternate function, speed 100MHz.
   //
-  v               = GPIOG->MODER;
+  v               = GPIOB->MODER;
+  v              &= ~(0x3uL << (2 * 12));
+  v              |=  (0x2uL << (2 * 12));
+  GPIOB->MODER    = v;
+  GPIOB->OSPEEDR |= (0x3uL << (2 * 12));
+  v               = GPIOB->AFR[1];
+  v              &= ~(0xFuL << (4 * 4));
+  v              |=  (0xBuL << (4 * 4));
+  GPIOB->AFR[1]   = v;
+  //
+  // Set PB13 (ETH_RMII_TXD1) as alternate function, speed 100MHz.
+  //
+  v               = GPIOB->MODER;
   v              &= ~(0x3uL << (2 * 13));
   v              |=  (0x2uL << (2 * 13));
-  GPIOG->MODER    = v;
-  GPIOG->OSPEEDR |= (0x3uL << (2 * 13));
-  v               = GPIOG->AFR[1];
+  GPIOB->MODER    = v;
+  GPIOB->OSPEEDR |= (0x3uL << (2 * 13));
+  v               = GPIOB->AFR[1];
   v              &= ~(0xFuL << (4 * 5));
   v              |=  (0xBuL << (4 * 5));
-  GPIOG->AFR[1]   = v;
-  //
-  // Set PG14 (ETH_RMII_TXD1) as alternate function, speed 100MHz.
-  //
-  v               = GPIOG->MODER;
-  v              &= ~(0x3uL << (2 * 14));
-  v              |=  (0x2uL << (2 * 14));
-  GPIOG->MODER    = v;
-  GPIOG->OSPEEDR |= (0x3uL << (2 * 14));
-  v               = GPIOG->AFR[1];
-  v              &= ~(0xFuL << (4 * 6));
-  v              |=  (0xBuL << (4 * 6));
-  GPIOG->AFR[1]   = v;
+  GPIOB->AFR[1]   = v;
 }
 
 /*********************************************************************
