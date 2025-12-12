@@ -119,9 +119,24 @@
         <configuration Name="Common" file_open_with="Web Browser" />
       </file>
     </folder>
+    <folder Name="IP">
+      <file file_name="IP/BSP_IP.c" />
+      <file file_name="IP/IP_Config_STM32F407_ETH.c" />
+      <file file_name="IP/IP_ConfigIO.c" />
+      <file file_name="IP/IP_NI_SYNOPSYS.h" />
+      <file file_name="IP/IP_OS_embOS.c" />
+    </folder>
     <folder Name="Lib">
+      <file file_name="Lib/libip_v7em_fpv4_sp_d16_t_le_eabi_balanced_d.a" />
+      <file file_name="Lib/libip_v7em_fpv4_sp_d16_t_le_eabi_balanced_r.a">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
       <file file_name="Lib/libos_v7m_t_vfpv4_le_dp.a" />
       <file file_name="Lib/libos_v7m_t_vfpv4_le_r.a">
+        <configuration Name="Debug" build_exclude_from_build="Yes" />
+      </file>
+      <file file_name="Lib/libsegger_v7em_fpv4_sp_d16_t_le_eabi_balanced_d.a" />
+      <file file_name="Lib/libsegger_v7em_fpv4_sp_d16_t_le_eabi_balanced_r.a">
         <configuration Name="Debug" build_exclude_from_build="Yes" />
       </file>
     </folder>
