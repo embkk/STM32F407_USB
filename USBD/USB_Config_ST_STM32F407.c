@@ -147,17 +147,17 @@ void USBD_X_Config(void) {
   volatile unsigned int v;
 
   RCC_AHB1ENR |= 0
-              | (1 <<  0)  // GPIOBEN: IO port A clock enable
+              | (1 <<  0)  // GPIOAEN: IO port A clock enable
               ;
   //
   // PA12,PA11,
   
   //
-  GPIOA_MODER    =   (GPIOA_MODER  & ~(0x0FUL << 22)) | (0x0AUL << 24); //AF PA11, PA12
-  GPIOA_OTYPER  &=  ~(0x0FUL << 11);
-  GPIOA_OSPEEDR |=   (0xFFUL << 22);
-  GPIOA_PUPDR   &=  ~(0xFFUL << 22);
-  GPIOA_AFRH     =   (GPIOA_AFRH  & ~(0xFF0FUL << 12)) | (0xCC0CUL << 12); //AF10
+  GPIOA_MODER    =   (GPIOA_MODER  & ~(0x0FUL << 22)) | (0x0AUL << 22); //AF PA11, PA12
+  GPIOA_OTYPER  &=  ~(0x03UL << 11);
+  GPIOA_OSPEEDR |=   (0x0FUL << 22);
+  GPIOA_PUPDR   &=  ~(0x0FUL << 22);
+  GPIOA_AFRH     =   (GPIOA_AFRH  & ~(0xFFUL << 12)) | (0xAAUL << 12); //AF10
   
   //
   // STM32(Forum)
