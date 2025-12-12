@@ -27,7 +27,7 @@ Purpose : Config file for ST MB1045.
 *
 **********************************************************************
 */
-#define USB_ISR_ID    (77)
+#define USB_ISR_ID    (67) // OTG_FS (full speed)
 #define USB_ISR_PRIO  254
 
 /*********************************************************************
@@ -147,17 +147,18 @@ void USBD_X_Config(void) {
   volatile unsigned int v;
 
   RCC_AHB1ENR |= 0
-              | (1 <<  1)  // GPIOBEN: IO port B clock enable
+              | (1 <<  0)  // GPIOBEN: IO port A clock enable
               ;
   //
-  // PB12,PB14,PB15 (OTG_HS_ internal alternate function, OTG_HS_DP, OTG_HS_DM, OTG_HS_ID)
-  // PB13 VBUS_ general purpose output mode
+  // PA12,PA11,
+  
   //
-  GPIOB_MODER    =   (GPIOB_MODER  & ~(0xFFUL << 24)) | (0xA6UL << 24);
-  GPIOB_OTYPER  &=  ~(0x0FUL << 12);
-  GPIOB_OSPEEDR |=   (0xFFUL << 24);
-  GPIOB_PUPDR   &=  ~(0xFFUL << 24);
-  GPIOB_AFRH     =   (GPIOB_AFRH  & ~(0xFF0FUL << 16)) | (0xCC0CUL << 16);
+  GPIOA_MODER    =   (GPIOA_MODER  & ~(0x0FUL << 22)) | (0x0AUL << 24); //AF PA11, PA12
+  GPIOA_OTYPER  &=  ~(0x0FUL << 11);
+  GPIOA_OSPEEDR |=   (0xFFUL << 22);
+  GPIOA_PUPDR   &=  ~(0xFFUL << 22);
+  GPIOA_AFRH     =   (GPIOA_AFRH  & ~(0xFF0FUL << 12)) | (0xCC0CUL << 12); //AF10
+  
   //
   // STM32(Forum)
   // https://goo.gl/yh4wZ8
@@ -169,23 +170,23 @@ void USBD_X_Config(void) {
   // 2) Set   bit  OTGHSLPEN     in register  AHB1LPENR (already set by default)
   //
   //
-  RCC_AHB1LPENR &= ~(1UL << 30);
+  //RCC_AHB1LPENR &= ~(1UL << 30);
   //
-  // Enable clock for OTG_HS.
+  // Enable clock for OTG_FS.
   //
-  RCC_AHB1ENR    |=  (1UL << 29);
+  RCC_AHB2ENR    |=  (1UL << 7);
   for (v = 0; v < 1000000; v++);
   //
-  // Reset OTGHS clock.
+  // Reset OTGFS clock.
   //
-  RCC_AHB1RSTR   |=  (1UL << 29);
+  RCC_AHB2RSTR   |=  (1UL << 7);
   for (v = 0; v < 5000000; v++);
-  RCC_AHB1RSTR   &= ~(1UL << 29);
+  RCC_AHB2RSTR   &= ~(1UL << 7);
   for (v = 0; v < 4000000; v++);
   //
   // Add driver.
   //
-  USBD_AddDriver(&USB_Driver_ST_STM32F4xxHS_inFS);
+  USBD_AddDriver(&USB_Driver_ST_STM32F4xxFS);
   USBD_SetISRMgmFuncs(_EnableISR, USB_OS_IncDI, USB_OS_DecRI);
 }
 

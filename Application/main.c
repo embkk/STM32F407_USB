@@ -33,6 +33,9 @@ Purpose : embOS sample program running two simple tasks, each toggling
 
 #include "RTOS.h"
 #include "BSP.h"
+#include "USB.h"
+#include "USB_HID.h"
+#include "BSP_USB.h"
 
 static OS_STACKPTR int StackHP[128], StackLP[128];  // Task stacks
 static OS_TASK         TCBHP, TCBLP;                // Task control blocks
