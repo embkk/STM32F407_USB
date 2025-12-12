@@ -48,13 +48,7 @@ int main(void) {
   extern void MainTask(void);
   OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
   OS_Start();   // Start embOS
-  IP_Logf_Application("Sending test ping to gateway...");
-int r = IP_SendPingCheckReply(_IFaceId, IP_BYTES2ADDR(192,168,2,1), NULL, 0, 1000);
-if (r == 0) {
-  IP_Logf_Application("Ping successful!");
-} else {
-  IP_Logf_Application("Ping failed: %d", r);
-}
+  
   return 0;
 }
 
