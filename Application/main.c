@@ -34,20 +34,13 @@ Purpose : embOS sample program running two simple tasks, each toggling
 #include "RTOS.h"
 #include "BSP.h"
 
-static OS_STACKPTR int StackHP[128], StackLP[128];  // Task stacks
-static OS_TASK         TCBHP, TCBLP;                // Task control blocks
+static OS_STACKPTR int Stack0[2000];  // Task stacks
+static OS_TASK         TCB0;                // Task control blocks
 
-static void HPTask(void) {
+static void MainTask(void) {
   while (1) {
     BSP_ToggleLED(0);
     OS_TASK_Delay(50);
-  }
-}
-
-static void LPTask(void) {
-  while (1) {
-    BSP_ToggleLED(1);
-    OS_TASK_Delay(200);
   }
 }
 
@@ -59,8 +52,7 @@ int main(void) {
   OS_Init();    // Initialize embOS
   OS_InitHW();  // Initialize required hardware
   BSP_Init();   // Initialize LED ports
-  OS_TASK_CREATE(&TCBHP, "HP Task", 100, HPTask, StackHP);
-  OS_TASK_CREATE(&TCBLP, "LP Task",  50, LPTask, StackLP);
+  OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
   OS_Start();   // Start embOS
   return 0;
 }
