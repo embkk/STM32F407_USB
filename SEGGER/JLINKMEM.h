@@ -3,13 +3,13 @@
 *                        The Embedded Experts                        *
 **********************************************************************
 *                                                                    *
-*       (c) 1995 - 2025 SEGGER Microcontroller GmbH                  *
+*       (c) 1995 - 2024 SEGGER Microcontroller GmbH                  *
 *                                                                    *
 *       Internet: segger.com  Support: support_embos@segger.com      *
 *                                                                    *
 **********************************************************************
 *                                                                    *
-*       embOS * Real time operating system                           *
+*       embOS-Ultra * Real time operating system                     *
 *                                                                    *
 *       Please note:                                                 *
 *                                                                    *
@@ -21,35 +21,32 @@
 *                                                                    *
 **********************************************************************
 *                                                                    *
-*       OS version: V5.20.0.0                                        *
+*       OS version: V5.18.1.0                                        *
 *                                                                    *
 **********************************************************************
 
 -------------------------- END-OF-HEADER -----------------------------
-File    : OS_StartLEDBlink.c
-Purpose : embOS sample program running two simple tasks, each toggling
-          an LED of the target hardware (as configured in BSP.c).
+File    : JLINKMEM.h
+Purpose : Header file for J-Link ARM communication using memory
 */
 
-#include "RTOS.h"
-#include "BSP.h"
+#ifndef JLINKMEM_H
+#define JLINKMEM_H
 
-static OS_STACKPTR int Stack0[2000];  // Task stacks
-static OS_TASK         TCB0;                // Task control blocks
+#ifdef __cplusplus
+extern "C" {
+#endif
 
-/*********************************************************************
-*
-*       main()
-*/
-int main(void) {
-  OS_Init();    // Initialize embOS
-  OS_InitHW();  // Initialize required hardware
-  BSP_Init();   // Initialize LED ports
-  extern void MainTask(void);
-  OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
-  OS_Start();   // Start embOS
-  
-  return 0;
+void JLINKMEM_Process         (void);
+void JLINKMEM_SetpfOnRx       (void (*pfOnRx)(OS_U8 Data));
+void JLINKMEM_SetpfOnTx       (OS_U8 (*pfOnTx)(void));
+void JLINKMEM_SetpfGetNextChar(OS_INT (*pfGetNextChar)(void));
+void JLINKMEM_SendChar        (OS_U8 Data);
+
+#ifdef __cplusplus
 }
+#endif
+
+#endif  // JLINKMEM_H
 
 /*************************** End of file ****************************/

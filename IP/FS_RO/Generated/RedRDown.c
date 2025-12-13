@@ -1,55 +1,45 @@
 /*********************************************************************
-*                     SEGGER Microcontroller GmbH                    *
+*                   (c) SEGGER Microcontroller GmbH                  *
 *                        The Embedded Experts                        *
 **********************************************************************
 *                                                                    *
-*       (c) 1995 - 2025 SEGGER Microcontroller GmbH                  *
+*       (c) 2007 - 2025    SEGGER Microcontroller GmbH               *
 *                                                                    *
-*       Internet: segger.com  Support: support_embos@segger.com      *
+*       www.segger.com     Support: www.segger.com/ticket            *
 *                                                                    *
 **********************************************************************
 *                                                                    *
-*       embOS * Real time operating system                           *
+*       emNet * TCP/IP stack for embedded applications               *
+*                                                                    *
 *                                                                    *
 *       Please note:                                                 *
 *                                                                    *
 *       Knowledge of this file may under no circumstances            *
-*       be used to write a similar product or a real-time            *
-*       operating system for in-house use.                           *
+*       be used to write a similar product for in-house use.         *
 *                                                                    *
 *       Thank you for your fairness !                                *
 *                                                                    *
 **********************************************************************
 *                                                                    *
-*       OS version: V5.20.0.0                                        *
+*       emNet version: V3.62.4                                       *
 *                                                                    *
 **********************************************************************
-
 -------------------------- END-OF-HEADER -----------------------------
-File    : OS_StartLEDBlink.c
-Purpose : embOS sample program running two simple tasks, each toggling
-          an LED of the target hardware (as configured in BSP.c).
+
+File    : RedRDown.c
+Purpose : Automatically created from RedRDown.gif using GenFiles.py
 */
 
-#include "RTOS.h"
-#include "BSP.h"
+#include "RedRDown.h"
 
-static OS_STACKPTR int Stack0[2000];  // Task stacks
-static OS_TASK         TCB0;                // Task control blocks
-
-/*********************************************************************
-*
-*       main()
-*/
-int main(void) {
-  OS_Init();    // Initialize embOS
-  OS_InitHW();  // Initialize required hardware
-  BSP_Init();   // Initialize LED ports
-  extern void MainTask(void);
-  OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
-  OS_Start();   // Start embOS
-  
-  return 0;
-}
+const unsigned char redrdown_file[102] = {
+  0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x0F, 0x00, 0x14, 0x00, 0xA2, 0xFF, 0x00, 0xC0, 0xC0, 0xC0,
+  0xFF, 0x00, 0x00, 0xBD, 0x01, 0x01, 0xFF, 0x1C, 0x19, 0xFF, 0x6D, 0x6D, 0x00, 0x00, 0x00, 0x00,
+  0x00, 0x00, 0x00, 0x00, 0x00, 0x21, 0xF9, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x2C, 0x00, 0x00,
+  0x00, 0x00, 0x0F, 0x00, 0x14, 0x00, 0x40, 0x03, 0x2B, 0x08, 0xBA, 0xDC, 0x40, 0x21, 0x92, 0x35,
+  0x9D, 0xBD, 0xD8, 0x8A, 0xC8, 0x43, 0xFE, 0x4A, 0x95, 0x6D, 0x1D, 0x31, 0x78, 0xD6, 0xD9, 0xA1,
+  0x60, 0xEB, 0xBE, 0x1F, 0x24, 0x6A, 0xEB, 0x64, 0xD2, 0x2B, 0xEB, 0xE4, 0x9A, 0xE0, 0xFF, 0x02,
+  0x98, 0x50, 0x91, 0x00, 0x00, 0x3B
+};
 
 /*************************** End of file ****************************/

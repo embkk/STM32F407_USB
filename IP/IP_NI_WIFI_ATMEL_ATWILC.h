@@ -1,55 +1,73 @@
 /*********************************************************************
-*                     SEGGER Microcontroller GmbH                    *
+*                   (c) SEGGER Microcontroller GmbH                  *
 *                        The Embedded Experts                        *
 **********************************************************************
 *                                                                    *
-*       (c) 1995 - 2025 SEGGER Microcontroller GmbH                  *
+*       (c) 2007 - 2025    SEGGER Microcontroller GmbH               *
 *                                                                    *
-*       Internet: segger.com  Support: support_embos@segger.com      *
+*       www.segger.com     Support: www.segger.com/ticket            *
 *                                                                    *
 **********************************************************************
 *                                                                    *
-*       embOS * Real time operating system                           *
+*       emNet * TCP/IP stack for embedded applications               *
+*                                                                    *
 *                                                                    *
 *       Please note:                                                 *
 *                                                                    *
 *       Knowledge of this file may under no circumstances            *
-*       be used to write a similar product or a real-time            *
-*       operating system for in-house use.                           *
+*       be used to write a similar product for in-house use.         *
 *                                                                    *
 *       Thank you for your fairness !                                *
 *                                                                    *
 **********************************************************************
 *                                                                    *
-*       OS version: V5.20.0.0                                        *
+*       emNet version: V3.62.4                                       *
 *                                                                    *
 **********************************************************************
-
 -------------------------- END-OF-HEADER -----------------------------
-File    : OS_StartLEDBlink.c
-Purpose : embOS sample program running two simple tasks, each toggling
-          an LED of the target hardware (as configured in BSP.c).
+Purpose : Driver specific header file for ATMEL ATWILC1000 WiFi controllers.
 */
 
-#include "RTOS.h"
-#include "BSP.h"
-
-static OS_STACKPTR int Stack0[2000];  // Task stacks
-static OS_TASK         TCB0;                // Task control blocks
+#ifndef IP_NI_WIFI_ATMEL_ATWILC_H  // Avoid multiple inclusion.
+#define IP_NI_WIFI_ATMEL_ATWILC_H
 
 /*********************************************************************
 *
-*       main()
+*       #include section
+*
+**********************************************************************
 */
-int main(void) {
-  OS_Init();    // Initialize embOS
-  OS_InitHW();  // Initialize required hardware
-  BSP_Init();   // Initialize LED ports
-  extern void MainTask(void);
-  OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
-  OS_Start();   // Start embOS
-  
-  return 0;
-}
+
+#include "IP.h"
+
+#if defined(__cplusplus)
+  extern "C" {                       // Make sure we have C-declarations in C++ programs.
+#endif
+
+/*********************************************************************
+*
+*       Types
+*
+**********************************************************************
+*/
+
+
+/*********************************************************************
+*
+*       API functions
+*
+**********************************************************************
+*/
+
+extern const IP_HW_DRIVER IP_Driver_Atmel_ATWILC;
+
+int IP_NI_WIFI_ATMEL_ATWILC_DownloadCert(unsigned IFaceId, U8* pCert, U32 Size, void* p);
+
+
+#if defined(__cplusplus)
+}                             // Make sure we have C-declarations in C++ programs.
+#endif
+
+#endif                        // Avoid multiple inclusion.
 
 /*************************** End of file ****************************/
