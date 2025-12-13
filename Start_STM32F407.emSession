@@ -25,9 +25,10 @@
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Application"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;DeviceSupport"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;IP"/>
+  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;IP;FS_RO"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Lib"/>
   <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;Setup"/>
-  <ProjectSessionItem path="Start_STM32F407;Start_STM32F407;USBD"/>
  </Project>
  <Register1>
   <RegisterWindow invisibleNodes="" visibleNodes="GPIOE/MODER;GPIOE/OTYPER;GPIOE/OSPEEDR;GPIOE/PUPDR;GPIOE/IDR;GPIOE/ODR;GPIOE/BSRR;GPIOE/LCKR;GPIOE/AFRL;GPIOE/AFRH" binaryNodes="" asciiNodes="" openNodes="GPIOE;GPIOE/BSRR" name="Start_STM32F407_Debug" decimalNodes="" octalNodes="" unsignedNodes=""/>
@@ -63,20 +64,23 @@
   <Watches active="0" update="Never"/>
  </Watch4>
  <Files>
-  <SessionOpenFile windowGroup="DockEditLeft" x="48" y="18" useTextEdit="1" path="Application/OS_StartLEDBlink.c" left="0" top="18" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="320" useTextEdit="1" path="Setup/OS_Error.c" left="0" top="317" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="76" useTextEdit="1" path="Setup/BSP.c" left="0" top="73" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="319" useTextEdit="1" path="Setup/OS_Error.c" left="0" top="319" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="21" y="76" useTextEdit="1" path="Setup/BSP.c" left="0" top="76" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="DeviceSupport/STM32F4xx_Startup.s" left="0" top="165" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="61" y="450" useTextEdit="1" path="DeviceSupport/system_stm32f4xx.c" left="0" top="450" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="47" y="225" useTextEdit="1" path="Setup/RTOSInit_STM32F4xx.c" left="0" top="222" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="47" y="225" useTextEdit="1" path="Setup/RTOSInit_STM32F4xx.c" left="0" top="225" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="58" y="36" useTextEdit="1" path="Setup/SEGGER_HardFaultHandler.c" left="0" top="36" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="60" useTextEdit="1" path="Inc/OS_Config.h" left="0" top="56" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="204" useTextEdit="1" path="Application/USB_HID_Mouse.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="9" y="34" useTextEdit="1" path="USBD/USB_ConfDefaults.h" left="0" top="2" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="15" y="150" useTextEdit="1" path="USBD/USB_Config_ST_STM32F407.c" left="0" selected="1" top="133" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="1" y="55" useTextEdit="1" path="Application/main.c" left="0" top="0" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="38" y="42" useTextEdit="1" path="USBD/USB_Conf.h" left="0" top="8" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="USBD/USB_ConfigIO.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="23" y="60" useTextEdit="1" path="Inc/OS_Config.h" left="0" top="60" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="54" useTextEdit="1" path="Application/main.c" left="0" top="54" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="46" y="62" useTextEdit="1" path="IP/IP_Config_STM32F407_ETH.c" left="0" selected="1" top="39" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="906" useTextEdit="1" path="Application/IP_WebserverSample.c" left="0" top="906" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="290" useTextEdit="1" path="IP/IP_ConfigIO.c" left="0" top="290" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="424" useTextEdit="1" path="IP/IP_OS_embOS.c" left="0" top="424" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="85" useTextEdit="1" path="IP/IP_Conf.h" left="0" top="85" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="IP/BSP_IP.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="44" y="578" useTextEdit="1" path="IP/FS_RO/Webserver_DynContent.c" left="0" top="560" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="IP/FS_RO/IP_FS_ReadOnly.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="IP/FS_RO/GenFiles.py" left="0" top="0" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="GDB Server" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/USBD" debugSearchPath="" autoConnectCapabilities="1343"/>
+ <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="GDB Server" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/Application" debugSearchPath="" autoConnectCapabilities="1343"/>
 </session>
