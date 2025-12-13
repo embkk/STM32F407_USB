@@ -2,6 +2,7 @@
 <session>
  <Bookmarks/>
  <Breakpoints groups="Breakpoints" active_group="Breakpoints">
+  <BreakpointListItem trigger="" line="47" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" stopAll="false" group="Breakpoints" type="Breakpoint" state="4" filename="IP/IP_Config_STM32F407_ETH.c" useHWbreakpoint="false"/>
   <BreakpointListItem trigger="" line="314" counter="0" hardwareBreakpoint="" isFunctionBreakpoint="false" action="" expression="" stopAll="false" group="Breakpoints" type="Breakpoint" state="4" filename="Setup/OS_Error.c" useHWbreakpoint="false"/>
  </Breakpoints>
  <ExecutionProfileWindow/>
@@ -71,9 +72,15 @@
   <SessionOpenFile windowGroup="DockEditLeft" x="47" y="225" useTextEdit="1" path="Setup/RTOSInit_STM32F4xx.c" left="0" top="225" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="58" y="36" useTextEdit="1" path="Setup/SEGGER_HardFaultHandler.c" left="0" top="36" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="23" y="60" useTextEdit="1" path="Inc/OS_Config.h" left="0" top="60" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="55" useTextEdit="1" path="Application/main.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="55" useTextEdit="1" path="Application/main.c" left="0" top="25" codecName="Default"/>
   <SessionOpenFile windowGroup="DockEditLeft" x="1" y="0" useTextEdit="1" path="Application/IP_Start.c" left="0" top="138" codecName="Default"/>
-  <SessionOpenFile windowGroup="DockEditLeft" x="43" y="47" useTextEdit="1" path="IP/IP_Config_STM32F407_ETH.c" left="0" selected="1" top="26" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="74" y="39" useTextEdit="1" path="IP/IP_Config_STM32F407_ETH.c" left="0" top="26" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="20" y="906" useTextEdit="1" path="Application/IP_WebserverSample.c" left="0" top="879" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="290" useTextEdit="1" path="IP/IP_ConfigIO.c" left="0" top="358" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="5" y="424" useTextEdit="1" path="IP/IP_OS_embOS.c" left="0" top="408" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="17" y="85" useTextEdit="1" path="IP/IP_Conf.h" left="0" top="74" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="0" y="0" useTextEdit="1" path="IP/BSP_IP.c" left="0" top="0" codecName="Default"/>
+  <SessionOpenFile windowGroup="DockEditLeft" x="6" y="560" useTextEdit="1" path="IP/FS_RO/Webserver_DynContent.c" left="0" selected="1" top="474" codecName="Default"/>
  </Files>
- <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="GDB Server" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/IP/FS_RO/Generated" debugSearchPath="" autoConnectCapabilities="1343"/>
+ <EMStudioWindow activeProject="Start_STM32F407" fileDialogDefaultFilter="*" autoConnectTarget="GDB Server" buildConfiguration="Debug" sessionSettings="" debugSearchFileMap="" fileDialogInitialDirectory="/home/unmanned-john-doe/git/embedded/STM32F407_USB/Application" debugSearchPath="" autoConnectCapabilities="1343"/>
 </session>

@@ -88,7 +88,7 @@
 
 #if DEBUG
   #ifndef   IP_DEBUG
-    #define IP_DEBUG      2      // Default for debug builds
+    #define IP_DEBUG      3      // Default for debug builds
   #endif
 #else
   #ifndef   IP_DEBUG

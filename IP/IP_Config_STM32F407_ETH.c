@@ -46,8 +46,8 @@ Purpose     : Configuration file for TCP/IP with STM32F407 was 746
 
 #define IP_ADDR      IP_BYTES2ADDR(177, 152,   1, 128)
 #define SUBNET_MASK  IP_BYTES2ADDR(255, 255, 255,   0)
-#define GW_ADDR      IP_BYTES2ADDR(192, 168,   2,   1)
-#define DNS_ADDR     IP_BYTES2ADDR(192, 168,   2,   1)
+#define GW_ADDR      IP_BYTES2ADDR(177, 152,   1,   1)
+#define DNS_ADDR     IP_BYTES2ADDR(177, 152,   1,   1)
 
 /*********************************************************************
 *
