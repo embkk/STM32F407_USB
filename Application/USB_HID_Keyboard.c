@@ -44,6 +44,7 @@ Additional information:
 *
 **********************************************************************
 */
+#include <stdint.h>
 #include <string.h>
 #include <ctype.h>
 #include "USB.h"
@@ -319,8 +320,9 @@ void USBD_HID_Keyboard_Init(void) {
 *    Performs the HID echo1 operation
 */
 void USBD_HID_Keyboard_RunTask(void * pPara) {
-  const char * sInfo0 = "This sample is based on the SEGGER emUSB-Device software with an HID component. ";
-  const char * sInfo1 = "For further information please visit: www.segger.com ";
+  const char * sInfo0 = "S";
+  const char * sInfo1 = "T";
+  const char * sInfo2 = "M";
 
   USB_USE_PARA(pPara);
   while (1) {
@@ -348,6 +350,9 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
 #if (SEND_RETURN == 1)
     _SendReturnCharacter();
 #endif
+  while(1) {
+    
+
   }
 }
 
