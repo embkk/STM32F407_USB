@@ -344,14 +344,17 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
     //
 
     Buttons_check();
-
+    
     if(btn_state[0]) {
+      LOG_MESSAGE("S");
       _Output("S");
     }
     if(btn_state[1]) {
+      LOG_MESSAGE("T");
       _Output("T");
     }
     if(btn_state[2]) {
+      LOG_MESSAGE("M");
       _Output("M");
     }
   }
