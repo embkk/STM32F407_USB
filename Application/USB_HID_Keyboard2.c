@@ -325,8 +325,7 @@ void USBD_HID_Keyboard_Init(void) {
 *    Performs the HID echo1 operation
 */
 
-char buffer[32] = "\0";
-uint8_t buffer_itr = 0;
+char last_pressed;
 
 void USBD_HID_Keyboard_RunTask(void * pPara) {
 
@@ -349,11 +348,11 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
     // In some cases this is not wanted as a return key may have undesired behavior.
     //
     
-    _Output("aaa");
-    for(int i=0; i<32; i++) {
-      _Output(&buffer[i]);
+    if(last_pressed!='\0') {
+      _Output(&last_pressed);
+      _SendReturnCharacter();
+      last_pressed = '\0';
     }
-    _SendReturnCharacter();
 
     /*snprintf(buf, sizeof(buf),
     "%d,%d,%d %s| ",
@@ -363,49 +362,19 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
   }
 }
 
-static void put(char s) {
-  if(buffer_itr < 32) {
-    buffer[buffer_itr++] = s;
-  }
-}
-
-static char get(void) {
-  if(buffer_itr == 0) return '\0';
-  char result = buffer[0];
-  for(uint8_t i=0; i<31; i++) {
-    buffer[i] = buffer[i+1];
-  }
-  buffer[31] = '\0';
-  buffer_itr--;
-  return result;
-}
-
 void ButtonTask(void) {
-  strcpy(buffer, "QWERTY___PASDFGHJKLZXCVBNMQWERT");
+  last_pressed = '\0';
   while(1) {
-    //continue;
     Buttons_check();
-    buffer[0] = btn_count[0];
-    buffer[1] = btn_state[0];
 
-    buffer[2] = btn_count[1];
-    buffer[3] = btn_state[1];
-
-    buffer[3] = btn_count[2];
-    buffer[4] = btn_state[2];
-
-    continue;
     if(btn_state[0]) {
-      put('S');
-      //_Output("S");
+      last_pressed = 'S';
     }
     if(btn_state[1]) {
-      put('T');
-      //_Output("T");
+      last_pressed = 'T';
     }
     if(btn_state[2]) {
-      put('M');
-      //_Output("M");
+      last_pressed = 'M';
     }
   }
 }
