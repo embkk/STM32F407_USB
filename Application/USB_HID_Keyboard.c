@@ -44,12 +44,12 @@ Additional information:
 *
 **********************************************************************
 */
-#include <stdint.h>
 #include <string.h>
 #include <ctype.h>
 #include "USB.h"
 #include "USB_HID.h"
 #include "BSP.h"
+#include "buttons.h"
 
 /*********************************************************************
 *
@@ -287,6 +287,9 @@ static void _SendReturnCharacter(void) {
 *    Add HID keyboard to USB stack
 */
 void USBD_HID_Keyboard_Init(void) {
+
+  Buttons_init();
+
   static U8           _abOutBuffer[USB_HS_INT_MAX_PACKET_SIZE];
   USB_HID_INIT_DATA   InitData;
   USB_ADD_EP_INFO     EPIntIn;
@@ -320,9 +323,6 @@ void USBD_HID_Keyboard_Init(void) {
 *    Performs the HID echo1 operation
 */
 void USBD_HID_Keyboard_RunTask(void * pPara) {
-  const char * sInfo0 = "S";
-  const char * sInfo1 = "T";
-  const char * sInfo2 = "M";
 
   USB_USE_PARA(pPara);
   while (1) {
@@ -342,17 +342,18 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
     // This function will send a Return/Enter key to the host.
     // In some cases this is not wanted as a return key may have undesired behavior.
     //
-    _Output(sInfo0);
-#if (SEND_RETURN == 1)
-    _SendReturnCharacter();
-#endif
-    _Output(sInfo1);
-#if (SEND_RETURN == 1)
-    _SendReturnCharacter();
-#endif
-  while(1) {
-    
 
+    Buttons_check();
+
+    if(btn_state[0]) {
+      _Output("S");
+    }
+    if(btn_state[1]) {
+      _Output("T");
+    }
+    if(btn_state[2]) {
+      _Output("M");
+    }
   }
 }
 
