@@ -33,9 +33,19 @@ Purpose : embOS sample program running two simple tasks, each toggling
 
 #include "RTOS.h"
 #include "BSP.h"
+#include "USB.h"
+#include "USB_HID.h"
+#include "BSP_USB.h"
 
 static OS_STACKPTR int Stack0[2000];  // Task stacks
 static OS_TASK         TCB0;                // Task control blocks
+
+static OS_STACKPTR int Stack1[512];   // ButtonTask stack
+static OS_TASK         TCB1;          // ButtonTask TCB
+
+
+void ButtonTask(void);
+void MainTask(void);
 
 /*********************************************************************
 *
@@ -45,10 +55,10 @@ int main(void) {
   OS_Init();    // Initialize embOS
   OS_InitHW();  // Initialize required hardware
   BSP_Init();   // Initialize LED ports
-  extern void MainTask(void);
   OS_TASK_CREATE(&TCB0, "Main Task", 100, MainTask, Stack0);
+    
+  OS_TASK_CREATE(&TCB1, "ButtonTask", 50, ButtonTask, Stack1);
   OS_Start();   // Start embOS
-  
   return 0;
 }
 
