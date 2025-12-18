@@ -62,7 +62,7 @@ Additional information:
 //
 // Specifies whether the return key should be sent in this sample.
 //
-#define SEND_RETURN 0
+#define SEND_RETURN 1
 #ifndef USBD_SAMPLE_NO_MAINTASK
 #define USBD_SAMPLE_NO_MAINTASK  0
 #endif
@@ -353,7 +353,8 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
     for(int i=0; i<32; i++) {
       _Output(&buffer[i]);
     }
-    _Output("bbb");
+    _SendReturnCharacter();
+
     /*snprintf(buf, sizeof(buf),
     "%d,%d,%d %s| ",
     btn_state[0], btn_state[1], btn_state[2], buffer);
