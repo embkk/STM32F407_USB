@@ -1,7 +1,7 @@
 #include "buttons.h"
 #include "stm32f407xx.h"
 
-uint16_t bound_timer;
+uint32_t bound_timer;
 uint32_t btn_count[3] = {0};
 uint8_t btn_state[3] = {0};
 
@@ -26,7 +26,7 @@ void LED_init(void) {
 
 
 #define button(n, port) if ((GPIOE->IDR & GPIO_IDR_ID##port )==0) {\
-    if(btn_count[n] < BTN_CHECK_MS) {\
+    if(btn_count[n] < BTN_PRESS_COUNT) {\
       btn_count[n]++;\
     } else {\
       btn_state[n] = 1;\
@@ -37,6 +37,8 @@ void LED_init(void) {
   }
 
 void Buttons_check(void) {
+  //if(bound_timer<BTN_CHECK_MS) return;
+  //bound_timer = 0;
   button(0, 10);
   button(1, 11);
   button(2, 12);

@@ -51,6 +51,8 @@ Additional information:
 #include "BSP.h"
 #include "buttons.h"
 
+
+
 /*********************************************************************
 *
 *       Defines, configurable
@@ -322,11 +324,15 @@ void USBD_HID_Keyboard_Init(void) {
 *  Function description
 *    Performs the HID echo1 operation
 */
+
+char buffer[32] = "\0";
+uint8_t buffer_itr = 0;
+
 void USBD_HID_Keyboard_RunTask(void * pPara) {
 
   USB_USE_PARA(pPara);
+  char buf[32];
   while (1) {
-
     //
     // Wait for configuration
     //
@@ -342,20 +348,63 @@ void USBD_HID_Keyboard_RunTask(void * pPara) {
     // This function will send a Return/Enter key to the host.
     // In some cases this is not wanted as a return key may have undesired behavior.
     //
-
-    Buttons_check();
     
+    _Output("aaa");
+    for(int i=0; i<32; i++) {
+      _Output(&buffer[i]);
+    }
+    _Output("bbb");
+    /*snprintf(buf, sizeof(buf),
+    "%d,%d,%d %s| ",
+    btn_state[0], btn_state[1], btn_state[2], buffer);
+    
+    _Output(buf);*/
+  }
+}
+
+static void put(char s) {
+  if(buffer_itr < 32) {
+    buffer[buffer_itr++] = s;
+  }
+}
+
+static char get(void) {
+  if(buffer_itr == 0) return '\0';
+  char result = buffer[0];
+  for(uint8_t i=0; i<31; i++) {
+    buffer[i] = buffer[i+1];
+  }
+  buffer[31] = '\0';
+  buffer_itr--;
+  return result;
+}
+
+void ButtonTask(void) {
+  strcpy(buffer, "QWERTY___PASDFGHJKLZXCVBNMQWERT");
+  while(1) {
+    //continue;
+    Buttons_check();
+    buffer[0] = btn_count[0];
+    buffer[1] = btn_state[0];
+
+    buffer[2] = btn_count[1];
+    buffer[3] = btn_state[1];
+
+    buffer[3] = btn_count[2];
+    buffer[4] = btn_state[2];
+
+    continue;
     if(btn_state[0]) {
-      LOG_MESSAGE("S");
-      _Output("S");
+      put('S');
+      //_Output("S");
     }
     if(btn_state[1]) {
-      LOG_MESSAGE("T");
-      _Output("T");
+      put('T');
+      //_Output("T");
     }
     if(btn_state[2]) {
-      LOG_MESSAGE("M");
-      _Output("M");
+      put('M');
+      //_Output("M");
     }
   }
 }
